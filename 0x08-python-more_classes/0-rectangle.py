@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+def coplist(l):
+return l(:)
 """""This module create a rectangle"""
 
 
