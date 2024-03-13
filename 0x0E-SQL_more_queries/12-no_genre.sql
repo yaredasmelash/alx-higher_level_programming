@@ -5,4 +5,5 @@ SELECT s.`title`, g.`genre_id`
        LEFT JOIN `tv_show_genres` AS g
        ON s.`id` = g.`show_id`
        WHERE g.`genre_id` IS NULL
- ORDER BY s.`title`, g.`genre_id`
+ ORDER BY s.`title`, g.`genre_id`;
+ 
