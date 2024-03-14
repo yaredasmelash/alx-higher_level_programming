@@ -121,4 +121,4 @@ $ cat 3-force_name.sql | mysql -hlocalhost -uroot -p hbtn_0d_2
   database `hbtn_0d_tvshows_rate` by their rating, in order of descending rating.
 
 ## author
-Yared Asmelash
+Yared Asmelash Mekonen
