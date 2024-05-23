@@ -1,35 +1,72 @@
-#include <stddef.h>
-#include <stdio.h>
 #include "lists.h"
 
 /**
- * is_palindrome - check if a linked list is a palindrome
+ * reverse_listint - reverses a linked list
+ * @head: pointer to the first node in the list
  *
- * @head: first node
+ * Return: pointer to the first node in the new list
+ */
+void reverse_listint(listint_t **head)
+{
+	listint_t *prev = NULL;
+	listint_t *current = *head;
+	listint_t *next = NULL;
+
+	while (current)
+	{
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+
+	*head = prev;
+}
+
+/**
+ * is_palindrome - checks if a linked list is a palindrome
+ * @head: double pointer to the linked list
  *
- * Return: 1 if success
- *         0 if failed
+ * Return: 1 if it is, 0 if not
  */
 int is_palindrome(listint_t **head)
 {
-  listint_t *tmp = *head;
-  int values[2048], i = 0, cLoop, limit;
+	listint_t *slow = *head, *fast = *head, *temp = *head, *dup = NULL;
 
-  if (head == NULL || *head == NULL)
-    return (1);
+	if (*head == NULL || (*head)->next == NULL)
+		return (1);
 
-  while (tmp != NULL)
-    {
-      values[i] = tmp->n;
-      i++;
-      tmp = tmp->next;
-    }
+	while (1)
+	{
+		fast = fast->next->next;
+		if (!fast)
+		{
+			dup = slow->next;
+			break;
+		}
+		if (!fast->next)
+		{
+			dup = slow->next->next;
+			break;
+		}
+		slow = slow->next;
+	}
 
-  limit = (i % 2 == 0) ? i / 2 : (i + 1) / 2;
+	reverse_listint(&dup);
 
-  for (cLoop = 0; cLoop < limit; cLoop++)
-    if (values[cLoop] != values[i - 1 - cLoop])
-      return (0);
+	while (dup && temp)
+	{
+		if (temp->n == dup->n)
+		{
+			dup = dup->next;
+			temp = temp->next;
+		}
+		else
+			return (0);
+	}
 
-  return (1);
+	if (!dup)
+		return (1);
+
+	return (0);
 }
