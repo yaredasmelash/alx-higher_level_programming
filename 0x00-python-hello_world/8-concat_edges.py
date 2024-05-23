@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-str = "Python is an interpreted, interactive, object-oriented programming\
- language that combines remarkable power with very clear syntax"
-str = str[39:67] + str[107:112] + str[:6]
-print(str)
+word = "Holberton"
+# YOUR CODE GOES HERE. PLEASE REMOVE THIS LINE
+print(f"First 3 letters: {word_first_3}")
+print(f"Last 2 letters: {word_last_2}")
+print(f"Middle word: {middle_word}")
